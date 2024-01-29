@@ -11,13 +11,13 @@ export const authData = createContext()
 
 function App() {
   const [users, setUsers] = useState([])
+  const [login, setLogin] = useState(true)
+
   return (
     <>
       {/* <Signup /> */}
-
       <BrowserRouter>
-        <Header />
-        <authData.Provider value={{users, setUsers}}>
+        <authData.Provider value={{ users, setUsers, login, setLogin }}>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/signup' element={<Signup />} />
