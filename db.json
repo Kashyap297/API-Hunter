@@ -1,44 +1,11 @@
 {
   "users": [
     {
-      "id": "bd01",
-      "name": "Kashyap Chauhan",
+      "id": "19a7",
+      "name": "kashyap",
       "email": "kashyap@gmail.com",
       "password": "222",
-      "cart": [
-        {
-          "id": "1",
-          "name": "JBL Headphones",
-          "disc": "Experience uncompromis-ing JBL sound wherever you are through wired and wireless technology. ",
-          "img": "images/headphones.jpg",
-          "qty": 1,
-          "price": 4999
-        },
-        {
-          "id": "3",
-          "name": "Xiaomi Earbuds",
-          "disc": "Redmi Buds Essential. 7.2mm dynamic driver professionally tuned by Xiaomi Acoustic Lab.",
-          "img": "images/earbuds.jpg",
-          "qty": 1,
-          "price": 2999
-        }
-      ]
-    },
-    {
-      "id": "aa10",
-      "name": "Omprakash",
-      "email": "omprakash@gmail.com",
-      "password": "555",
-      "cart": [
-        {
-          "id": "3",
-          "name": "Xiaomi Earbuds",
-          "disc": "Redmi Buds Essential. 7.2mm dynamic driver professionally tuned by Xiaomi Acoustic Lab.",
-          "img": "images/earbuds.jpg",
-          "qty": 1,
-          "price": 2999
-        }
-      ]
+      "cart": []
     }
   ],
   "products": [

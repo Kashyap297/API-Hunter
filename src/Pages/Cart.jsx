@@ -11,6 +11,7 @@ const Cart = () => {
     const [noRecord, setNoRecord] = useState(false)
     const [user, setUser] = useState()
     const [totalAmount, setTotalAmount] = useState(0)
+    // const { bagCount, setBagCount } = useContext(authData)
 
     useEffect(() => {
         getCart()
@@ -19,6 +20,7 @@ const Cart = () => {
     useEffect(() => {
         if (cartProducts.length < 1) {
             setNoRecord(true)
+            setTotalAmount(0)
         } else {
             setNoRecord(false)
             const total = cartProducts.reduce((acc, item) => acc + item.qty * item.price, 0)
@@ -40,51 +42,53 @@ const Cart = () => {
             })
     }
 
-    const handleIncrement = async(id) => {
+    const handleIncrement = async (id) => {
         // console.log(id);
         const proid = id
         const updatedUser = { ...user }
-        const updatedCart  = [...cartProducts]
+        const updatedCart = [...cartProducts]
 
         updatedCart.forEach((item) => {
-           
+
             if (proid === item.id) {
                 item.qty++;
                 updatedUser.cart = updatedCart;
             }
         })
-        try{
+        try {
             await axios.put(`http://localhost:1000/users/${logedUser.id}`, updatedUser)
             setCartProducts(updatedUser.cart)
             setLogedUser(updatedUser)
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
-       
+
     }
 
-    const handleDecrement = async(id) => {
+    const handleDecrement = async (id) => {
         const proid = id
         const updatedUser = { ...user }
-        const updatedCart  = [...cartProducts]
+        const updatedCart = [...cartProducts]
 
-        updatedCart.forEach((item) => {
-           
+        updatedCart.forEach(async (item) => {
+
             if (proid === item.id) {
-                if(item.qty > 1){
+                if (item.qty > 1) {
                     item.qty--;
+                    updatedUser.cart = updatedCart;
+                } else {
                     updatedUser.cart = updatedCart;
                 }
             }
         })
-        try{
+        try {
             await axios.put(`http://localhost:1000/users/${logedUser.id}`, updatedUser)
             setCartProducts(updatedUser.cart)
             setLogedUser(updatedUser)
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
-       
+
     }
     const handleDelete = async (id) => {
 
@@ -133,7 +137,7 @@ const Cart = () => {
             <section className='my-5'>
                 <div className="container">
                     <div className="area p-4 bg-white bor-rad shadow">
-                        <p className='text-end fs-5 fw-bold text-success mt-0 text-uppercase'> {logedUser && logedUser.name}</p>
+                        <p className='text-end fs-5 fw-bold mt-0 text-uppercase theme-clr'> {logedUser && logedUser.name}</p>
                         <header className='bg-dark p-3 bor-rad shadow'>
                             <div className="d-flex align-items-center justify-content-between">
                                 <p className='m-0 gr-text fs-5'>Shopping Cart</p>

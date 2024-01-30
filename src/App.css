@@ -101,7 +101,9 @@ a {
 body {
   background-color: lightslategrey !important;
 }
-
+.theme-clr{
+  color : #778899 !important;
+}
 .lightslategrey {
   color: rgb(99, 95, 95);
 }

@@ -8,9 +8,8 @@ import { authData } from '../App'
 const Products = () => {
 
     const { logedUser, setLogedUser } = useContext(authData)
-    // console.log(logedUser.id);
-    // const { login, setLogin} = useContext(authData)
     const [products, setProducts] = useState([])
+    // const { bagCount, setBagCount } = useContext(authData)
 
     useEffect(() => {
         getProducts()
@@ -27,47 +26,49 @@ const Products = () => {
         }
     }
 
-    const handleAddToCart = async(product) => {
+    // const updatedBagCount = () => {
+    //     if (logedUser && logedUser.cart) {
+    //         const uniqueItems = new Set(logedUser.cart.map((item) => item.id));
+    //         setBagCount(uniqueItems.size);
+    //     } else {
+    //         setBagCount(0);
+    //     }
+    // }
+
+    const handleAddToCart = async (product) => {
         // console.log(product);
-        try{
+        try {
             const res = await axios.get(`http://localhost:1000/users/${logedUser.id}`)
             // .then((res) => res.data)
             const currentUser = res.data
-            // console.log(currentUser);
-            // .then((json) => console.log(json))
-            // console.log(res);
-
-            let cart = [{...product}]
-            // console.log(cart);
-            if(currentUser.cart){
+            let cart = [{ ...product }]
+            if (currentUser.cart || currentUser.count) {
                 const check = currentUser.cart.some(e => {
-                    if(e.id === product.id){
+                    if (e.id === product.id) {
                         e.qty += 1;
                         return true
                     }
                 })
-                if(!check){
-                    cart = [...currentUser.cart, {...product}]
-                }else{
+                if (!check) {
+                    cart = [...currentUser.cart, { ...product }]
+                } else {
                     cart = currentUser.cart
                 }
             }
-            let updatedUser = {...currentUser, cart}
+            let updatedUser = { ...currentUser, cart }
             const updatedCart = await axios.put(`http://localhost:1000/users/${logedUser.id}`, updatedUser);
-            // console.log(updatedCart.data);
             setLogedUser(updatedCart.data)
-            // const updatedCart = [...currentUser.cart, product]
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
+        // console.log(logedUser.count);
     }
-
     return (
         <>
             <section className='my-5'>
                 <div className="container">
                     <div className="area p-4 bg-white bor-rad shadow">
-                        <p className='text-end fs-5 fw-bold text-success mt-0 text-uppercase'> {logedUser && logedUser.name}</p>
+                        <p className='text-end fs-5 fw-bold theme-clr mt-0 text-uppercase'> {logedUser && logedUser.name}</p>
                         <header className='bg-dark p-3 bor-rad shadow'>
                             <div className="d-flex align-items-center justify-content-between">
                                 <p className='m-0 gr-text fs-5'>Smart Devices</p>

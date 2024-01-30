@@ -15,6 +15,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [login, setLogin] = useState(false)
   const [logedUser, setLogedUser] = useState(null)
+  const [bagCount, setBagCount] = useState(0)
 
 
   useEffect(() => {
@@ -32,7 +33,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <authData.Provider value={{ users, setUsers, login, setLogin, logedUser, setLogedUser }}>
+        <authData.Provider value={{ users, setUsers, login, setLogin, logedUser, setLogedUser, bagCount, setBagCount }}>
           <Header />
           <Routes>
             {
