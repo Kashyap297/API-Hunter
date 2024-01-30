@@ -35,8 +35,8 @@ const Signup = () => {
         getData()
     }, [])
 
-    const getData = () => {
-        axios.get("http://localhost:2000/users")
+    const getData = async() => {
+        await axios.get("http://localhost:2000/users")
             .then((resp) => resp.data)
             .then((json) => setUsers(json))
     }
@@ -108,7 +108,7 @@ const Signup = () => {
                                 <p className='text-center mt-3 mb-0'>Already have an account? <Link to={"/login"} className="text-primary fw-bold">Login </Link></p>
                                 <p className='text-center text-secondary mt-2'>------ Or ------</p>
                                 <div className='btn btn-outline-dark w-100'><i className="fa-brands fa-google me-2"></i>Login with Google</div>
-                                <div className='btn btn-outline-dark mt-3 w-100'><i class="fa-brands fa-github me-2"></i>Login with Git-Hub</div>
+                                <div className='btn btn-outline-dark mt-3 w-100'><i className="fa-brands fa-github me-2"></i>Login with Git-Hub</div>
                             </form>
                         </div>
                     </div>

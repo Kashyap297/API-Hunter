@@ -5,13 +5,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
-// import Swal from "sweetalert2/src/sweetalert2.js"
-
 
 const Login = () => {
 
     const { users, setUsers } = useContext(authData)
     const { login, setLogin } = useContext(authData)
+    const {logedUser, setLogedUser} = useContext(authData)
+
     const navigate = useNavigate()
     // console.log(users);
 
@@ -19,8 +19,8 @@ const Login = () => {
         getData()
     }, [])
 
-    const getData = () => {
-        axios.get("http://localhost:2000/users")
+    const getData = async() => {
+        await axios.get("http://localhost:2000/users")
             .then((resp) => resp.data)
             .then((json) => setUsers(json))
     }
@@ -62,8 +62,12 @@ const Login = () => {
                         showConfirmButton: false,
                         timer: 1700
                     });
-                    setLogin(false)
+                    setLogin(true)
                     navigate("/")
+                    // console.log(foundUser);
+                    setLogedUser(foundUser)
+                    localStorage.setItem("loginUser", JSON.stringify(foundUser))
+                    localStorage.setItem("login", JSON.stringify(true))
                 } else {
                     toast.error("Incorrect Password...!", {
                         position: toast.POSITION,
@@ -105,7 +109,7 @@ const Login = () => {
                                 <p className='text-center mt-3 mb-0'>Don't have an account ? <Link to={"/signup"} className="text-primary fw-bold w-100">Sign Up</Link></p>
                                 <p className='text-center text-secondary mt-2'>------ Or ------</p>
                                 <div className='btn btn-outline-dark w-100'><i className="fa-brands fa-google me-2"></i>Login with Google</div>
-                                <div className='btn btn-outline-dark mt-3 w-100'><i class="fa-brands fa-github me-2"></i>Login with Git-Hub</div>
+                                <div className='btn btn-outline-dark mt-3 w-100'><i className="fa-brands fa-github me-2"></i>Login with Git-Hub</div>
                             </form>
                         </div>
                     </div>

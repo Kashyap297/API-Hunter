@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { authData } from '../App'
 import Swal from 'sweetalert2'
 
 const Header = () => {
 
-    const { login, setLogin } = useContext(authData)
+    const { login, setLogin } = useContext(authData)    
+    const {logedUser, setLogedUser} = useContext(authData)
+    const navigate = useNavigate()
 
     const handleLogout = () => {
         Swal.fire({
@@ -15,7 +17,11 @@ const Header = () => {
             showConfirmButton: false,
             timer: 1700
         });
-        setLogin(true)
+        setLogin(false);
+        localStorage.removeItem('loginUser')
+        localStorage.removeItem('login')
+        setLogedUser(null)
+        navigate('/')
     }
 
     return (
@@ -31,7 +37,7 @@ const Header = () => {
                             </ul>
                             <ul className='text-end d-flex justify-content-end align-items-center mb-0 gap-2'>
                                 {
-                                    login ? <>
+                                    !login ? <>
                                         <Link to={"/signup"} className='btn btn-light text-dark'>SignUp</Link>
                                         <Link to={"/login"} className='btn btn-light text-dark'>Login</Link>
                                     </>
