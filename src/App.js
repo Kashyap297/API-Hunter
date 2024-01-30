@@ -4,6 +4,10 @@ import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import Home from './Component/Home';
 import Login from './Component/Login';
 import { createContext, useEffect, useState } from 'react';
+import error from './icon/error-404.png'
+import Products from './Pages/Products';
+import Header from './Component/Header';
+import Cart from './Pages/Cart';
 
 export const authData = createContext()
 
@@ -11,7 +15,7 @@ function App() {
   const [users, setUsers] = useState([])
   const [login, setLogin] = useState(false)
   const [logedUser, setLogedUser] = useState(null)
-  
+
 
   useEffect(() => {
     const checkLogin = JSON.parse(localStorage.getItem('login'))
@@ -22,21 +26,37 @@ function App() {
       setLogedUser(storedLogin)
     }
   }, [])
- 
+
 
 
   return (
     <>
-      {/* <Signup /> */}
       <BrowserRouter>
         <authData.Provider value={{ users, setUsers, login, setLogin, logedUser, setLogedUser }}>
+          <Header />
           <Routes>
-            <Route path='/' element={<Home />} />
+            {
+              !login ? (
+                <>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/signup' element={<Signup />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/products' element={<Products />} />
+                </>
+              ) : (
+                <>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/products' element={<Products />} />
+                  <Route path='/cart' element={<Cart />} />
+                </>
+              )
+            }
+            {/* <Route path='/' element={<Home />} />
             <Route path='/signup' element={<Signup />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/login' element={<Login />} /> */}
+            <Route path='*' element={<h1 className='text-center mt-5'><img src={error} width="250px"></img></h1>} />
           </Routes>
         </authData.Provider>
-
       </BrowserRouter>
     </>
   );

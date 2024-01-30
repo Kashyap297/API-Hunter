@@ -36,7 +36,7 @@ const Signup = () => {
     }, [])
 
     const getData = async() => {
-        await axios.get("http://localhost:2000/users")
+        await axios.get("http://localhost:1000/users")
             .then((resp) => resp.data)
             .then((json) => setUsers(json))
     }
@@ -45,7 +45,7 @@ const Signup = () => {
         setInput({ ...input, [e.target.name]: e.target.value })
     }
 
-    const handleSignUp = (e) => {
+    const handleSignUp = async(e) => {
         e.preventDefault()
 
         const validate = checkValidation(input)
@@ -59,10 +59,11 @@ const Signup = () => {
                 });
                 // alert("Registered User Please Sign In Account")
             } else {
-                axios.post("http://localhost:2000/users", {
+                await axios.post("http://localhost:1000/users", {
                     name: input.name,
                     email: input.email,
-                    password: input.password
+                    password: input.password,
+                    cart : []
                 })
                     .then(() => {
                         getData()

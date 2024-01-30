@@ -1,40 +1,87 @@
 {
   "users": [
     {
-      "id": "939f",
-      "name": "arvik",
-      "email": "arvik@gmail.com",
-      "password": "06012020"
-    },
-    {
-      "id": "9223",
+      "id": "d15b",
       "name": "kashyap",
       "email": "kashyap@gmail.com",
-      "password": "29072000"
+      "password": "222",
+      "cart": [
+        {
+          "id": 4,
+          "name": "Boat Smart-Watch",
+          "disc": "A portable device worn on the wrist that supports apps and acts as an extension of your mobile phone in some cases.",
+          "img": "images/watch.jpg",
+          "qty": 1,
+          "price": 3299
+        },
+        {
+          "id": 1,
+          "name": "JBL Headphones",
+          "disc": "Experience uncompromis-ing JBL sound wherever you are through wired and wireless technology. ",
+          "img": "images/headphones.jpg",
+          "qty": 1,
+          "price": 4999
+        }
+      ]
     },
     {
-      "id": "06a0",
-      "name": "vikas",
-      "email": "vikas@gmail.com",
-      "password": "222"
-    },
-    {
-      "id": "2329",
-      "name": "om",
+      "id": "583c",
+      "name": "Omprakash",
       "email": "omprakash@gmail.com",
-      "password": "555"
-    },
-    {
-      "id": "7a38",
-      "name": "kevin",
-      "email": "kevin@gmail.com",
-      "password": "999"
-    },
-    {
-      "id": "85ab",
-      "name": "anant",
-      "email": "anant@gmail.com",
-      "password": "aaa"
+      "password": "555",
+      "cart": [
+        {
+          "id": 2,
+          "name": "Echo Dot Speaker",
+          "disc": "The sleek, compact design delivers crisp vocals and balanced bass for full sound. stream songs from Amazon Music.",
+          "img": "images/speaker.jpg",
+          "qty": 1,
+          "price": 3499
+        },
+        {
+          "id": 3,
+          "name": "Xiaomi Earbuds",
+          "disc": "Redmi Buds Essential. 7.2mm dynamic driver professionally tuned by Xiaomi Acoustic Lab.",
+          "img": "images/earbuds.jpg",
+          "qty": 1,
+          "price": 2999
+        }
+      ]
     }
-  ]
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "JBL Headphones",
+      "disc": "Experience uncompromis-ing JBL sound wherever you are through wired and wireless technology. ",
+      "img": "images/headphones.jpg",
+      "qty": 1,
+      "price": 4999
+    },
+    {
+      "id": 2,
+      "name": "Echo Dot Speaker",
+      "disc": "The sleek, compact design delivers crisp vocals and balanced bass for full sound. stream songs from Amazon Music.",
+      "img": "images/speaker.jpg",
+      "qty": 1,
+      "price": 3499
+    },
+    {
+      "id": 3,
+      "name": "Xiaomi Earbuds",
+      "disc": "Redmi Buds Essential. 7.2mm dynamic driver professionally tuned by Xiaomi Acoustic Lab.",
+      "img": "images/earbuds.jpg",
+      "qty": 1,
+      "price": 2999
+    },
+    {
+      "id": 4,
+      "name": "Boat Smart-Watch",
+      "disc": "A portable device worn on the wrist that supports apps and acts as an extension of your mobile phone in some cases.",
+      "img": "images/watch.jpg",
+      "qty": 1,
+      "price": 3299
+    }
+  ],
+  "cart": []
 }

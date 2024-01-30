@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <h1 className='text-center mt-5 home'> Welcome to the home page!</h1>
       <h2 className='text-center mt-3'> Hello - {logedUser && logedUser.name}</h2>
     </>

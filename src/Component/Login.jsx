@@ -20,7 +20,7 @@ const Login = () => {
     }, [])
 
     const getData = async() => {
-        await axios.get("http://localhost:2000/users")
+        await axios.get("http://localhost:1000/users")
             .then((resp) => resp.data)
             .then((json) => setUsers(json))
     }

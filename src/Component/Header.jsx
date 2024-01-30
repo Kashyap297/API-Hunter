@@ -32,8 +32,8 @@ const Header = () => {
                         <div className="d-flex justify-content-between align-items-center">
                             <ul className='d-flex justify-content-between align-items-center gap-3 mb-0'>
                                 <Link to={"/"} className='fs-5'>Home</Link>
-                                <Link className='fs-5'>Products</Link>
-                                <Link className='fs-5'>Cart</Link>
+                                <Link to={"/products"} className='fs-5'>Products</Link>
+                                <Link to={"/cart"} className='fs-5'>Cart</Link>
                             </ul>
                             <ul className='text-end d-flex justify-content-end align-items-center mb-0 gap-2'>
                                 {
