@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Login = () => {
 
@@ -108,8 +110,8 @@ const Login = () => {
                                 </div>
                                 <p className='text-center mt-3 mb-0'>Don't have an account ? <Link to={"/signup"} className="text-primary fw-bold w-100">Sign Up</Link></p>
                                 <p className='text-center text-secondary mt-2'>------ Or ------</p>
-                                <div className='btn btn-outline-dark w-100'><i className="fa-brands fa-google me-2"></i>Login with Google</div>
-                                <div className='btn btn-outline-dark mt-3 w-100'><i className="fa-brands fa-github me-2"></i>Login with Git-Hub</div>
+                                <div className='btn btn-outline-dark w-100'><FontAwesomeIcon icon={faGoogle} className='me-2'/>Login with Google </div>
+                                <div className='btn btn-outline-dark mt-3 w-100'><FontAwesomeIcon icon={faGithub} className='me-2'/>Login with Git-Hub</div>
                             </form>
                         </div>
                     </div>

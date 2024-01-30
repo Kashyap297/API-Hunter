@@ -10,10 +10,8 @@ const Cart = () => {
     const [cartProducts, setCartProducts] = useState([])
     const [noRecord, setNoRecord] = useState(false)
     const [user, setUser] = useState()
-    // console.log(user);
-    // console.log(cartProducts);
-    // console.log(cartProducts.length);
-    // console.log(cartProducts);
+    const [totalAmount, setTotalAmount] = useState(0)
+
     useEffect(() => {
         getCart()
     }, [])
@@ -21,9 +19,10 @@ const Cart = () => {
     useEffect(() => {
         if (cartProducts.length < 1) {
             setNoRecord(true)
-            console.log(" empty Cart");
         } else {
             setNoRecord(false)
+            const total = cartProducts.reduce((acc, item) => acc + item.qty * item.price, 0)
+            setTotalAmount(total)
         }
     }, [cartProducts])
 
@@ -41,6 +40,52 @@ const Cart = () => {
             })
     }
 
+    const handleIncrement = async(id) => {
+        // console.log(id);
+        const proid = id
+        const updatedUser = { ...user }
+        const updatedCart  = [...cartProducts]
+
+        updatedCart.forEach((item) => {
+           
+            if (proid === item.id) {
+                item.qty++;
+                updatedUser.cart = updatedCart;
+            }
+        })
+        try{
+            await axios.put(`http://localhost:1000/users/${logedUser.id}`, updatedUser)
+            setCartProducts(updatedUser.cart)
+            setLogedUser(updatedUser)
+        }catch(err){
+            console.log(err);
+        }
+       
+    }
+
+    const handleDecrement = async(id) => {
+        const proid = id
+        const updatedUser = { ...user }
+        const updatedCart  = [...cartProducts]
+
+        updatedCart.forEach((item) => {
+           
+            if (proid === item.id) {
+                if(item.qty > 1){
+                    item.qty--;
+                    updatedUser.cart = updatedCart;
+                }
+            }
+        })
+        try{
+            await axios.put(`http://localhost:1000/users/${logedUser.id}`, updatedUser)
+            setCartProducts(updatedUser.cart)
+            setLogedUser(updatedUser)
+        }catch(err){
+            console.log(err);
+        }
+       
+    }
     const handleDelete = async (id) => {
 
         // 1
@@ -66,7 +111,7 @@ const Cart = () => {
             await axios.put(`http://localhost:1000/users/${logedUser.id}`, updatedUser)
             setCartProducts(updatedCart)
             setLogedUser(updatedUser)
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
 
@@ -140,12 +185,12 @@ const Cart = () => {
                                                                 <td className=''>{item.price}/-</td>
                                                                 <td className=''>
                                                                     <div className="quantity-field" >
-                                                                        <button className="value-button decrease-button">-</button>
+                                                                        <button className="value-button decrease-button" onClick={() => handleDecrement(item.id)}>-</button>
                                                                         <div className="number">{item.qty}</div>
-                                                                        <button className="value-button increase-button" >+</button>
+                                                                        <button className="value-button increase-button" onClick={() => handleIncrement(item.id)}>+</button>
                                                                     </div>
                                                                 </td>
-                                                                <td className=''>{item.subtotal}/-</td>
+                                                                <td className=''>{item.qty * item.price}/-</td>
                                                                 <td className=''>
                                                                     <button className="btn btn-light" onClick={() => handleDelete(id)}>
                                                                         <img src={bin} alt="" width="24px" />
@@ -165,7 +210,7 @@ const Cart = () => {
                                         <div className="bill mt-3 px-3 border-bottom pb-3">
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <span className='fs-5 fw-bold clr-gr'>Sub-Total</span>
-                                                <span className='fs-5'>00000/-</span>
+                                                <span className='fs-5'>{totalAmount}/-</span>
                                             </div>
                                             <div className="d-flex justify-content-between align-items-center mt-3">
                                                 <span className='fs-5 fw-bold clr-gr'>Delivery Charges</span>
@@ -174,7 +219,7 @@ const Cart = () => {
                                         </div>
                                         <div className="d-flex justify-content-between align-items-center mt-3 px-3 border-bottom pb-3">
                                             <span className='fs-5 fw-bold clr-gr'>Grand Total</span>
-                                            <span className='fs-4 fw-bold'> 00000/-</span>
+                                            <span className='fs-4 fw-bold'> {totalAmount}/-</span>
                                         </div>
                                     </div>
                                 </div>

@@ -4,6 +4,8 @@ import { authData } from '../App'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Signup = () => {
 
@@ -108,8 +110,8 @@ const Signup = () => {
                                 </div>
                                 <p className='text-center mt-3 mb-0'>Already have an account? <Link to={"/login"} className="text-primary fw-bold">Login </Link></p>
                                 <p className='text-center text-secondary mt-2'>------ Or ------</p>
-                                <div className='btn btn-outline-dark w-100'><i className="fa-brands fa-google me-2"></i>Login with Google</div>
-                                <div className='btn btn-outline-dark mt-3 w-100'><i className="fa-brands fa-github me-2"></i>Login with Git-Hub</div>
+                                <div className='btn btn-outline-dark w-100'><FontAwesomeIcon icon={faGoogle} className='me-2'/>Login with Google </div>
+                                <div className='btn btn-outline-dark mt-3 w-100'><FontAwesomeIcon icon={faGithub} className='me-2'/>Login with Git-Hub</div>
                             </form>
                         </div>
                     </div>
