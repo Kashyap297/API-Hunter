@@ -43,7 +43,31 @@
           "name": "Boat Smart-Watch",
           "disc": "A portable device worn on the wrist that supports apps and acts as an extension of your mobile phone in some cases.",
           "img": "images/watch.jpg",
-          "qty": 2,
+          "qty": 1,
+          "price": 3299
+        },
+        {
+          "id": "1",
+          "name": "JBL Headphones",
+          "disc": "Experience uncompromis-ing JBL sound wherever you are through wired and wireless technology. ",
+          "img": "images/headphones.jpg",
+          "qty": 1,
+          "price": 4999
+        }
+      ]
+    },
+    {
+      "id": "2df8",
+      "name": "Arvik Chauhan",
+      "email": "arvik@gmail.com",
+      "password": "2020",
+      "cart": [
+        {
+          "id": "4",
+          "name": "Boat Smart-Watch",
+          "disc": "A portable device worn on the wrist that supports apps and acts as an extension of your mobile phone in some cases.",
+          "img": "images/watch.jpg",
+          "qty": 1,
           "price": 3299
         }
       ]
