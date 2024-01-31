@@ -11,10 +11,10 @@ const Cart = () => {
     const [noRecord, setNoRecord] = useState(false)
     const [user, setUser] = useState()
     const [totalAmount, setTotalAmount] = useState(0)
-    // const { bagCount, setBagCount } = useContext(authData)
+    const { bagCount, setBagCount } = useContext(authData)
 
     useEffect(() => {
-        getCart()
+        getCart()   
     }, [])
 
     useEffect(() => {
@@ -35,6 +35,7 @@ const Cart = () => {
                 if (res.data.cart) {
                     setCartProducts(res.data.cart)
                     setUser(res.data)
+                    setBagCount(res.data.cart.length);
                 }
             })
             .catch((err) => {
@@ -114,6 +115,7 @@ const Cart = () => {
             updatedUser.cart = updatedCart
             await axios.put(`http://localhost:1000/users/${logedUser.id}`, updatedUser)
             setCartProducts(updatedCart)
+            setBagCount(updatedCart.length)
             setLogedUser(updatedUser)
         } catch (err) {
             console.log(err);
@@ -143,7 +145,7 @@ const Cart = () => {
                                 <p className='m-0 gr-text fs-5'>Shopping Cart</p>
                                 <div className="cart-item d-flex">
                                     <div className="cart p-2 me-3">
-                                        0 - items
+                                        {bagCount} - items
                                     </div>
                                     <Link to='/products' className='btn btn-light align-items-center text-dark'>Products<img src={home} alt="" width="24px" className='ms-2' /></Link>
                                 </div>

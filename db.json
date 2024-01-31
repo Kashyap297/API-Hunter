@@ -5,7 +5,48 @@
       "name": "kashyap",
       "email": "kashyap@gmail.com",
       "password": "222",
-      "cart": []
+      "cart": [
+        {
+          "id": "3",
+          "name": "Xiaomi Earbuds",
+          "disc": "Redmi Buds Essential. 7.2mm dynamic driver professionally tuned by Xiaomi Acoustic Lab.",
+          "img": "images/earbuds.jpg",
+          "qty": 1,
+          "price": 2999
+        },
+        {
+          "id": "4",
+          "name": "Boat Smart-Watch",
+          "disc": "A portable device worn on the wrist that supports apps and acts as an extension of your mobile phone in some cases.",
+          "img": "images/watch.jpg",
+          "qty": 1,
+          "price": 3299
+        },
+        {
+          "id": "2",
+          "name": "Echo Dot Speaker",
+          "disc": "The sleek, compact design delivers crisp vocals and balanced bass for full sound. stream songs from Amazon Music.",
+          "img": "images/speaker.jpg",
+          "qty": 1,
+          "price": 3499
+        }
+      ]
+    },
+    {
+      "id": "d23c",
+      "name": "Omprakash",
+      "email": "omprakash@gmail.com",
+      "password": "555",
+      "cart": [
+        {
+          "id": "4",
+          "name": "Boat Smart-Watch",
+          "disc": "A portable device worn on the wrist that supports apps and acts as an extension of your mobile phone in some cases.",
+          "img": "images/watch.jpg",
+          "qty": 2,
+          "price": 3299
+        }
+      ]
     }
   ],
   "products": [

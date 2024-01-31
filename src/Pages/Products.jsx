@@ -3,13 +3,11 @@ import carticon from '../icon/cart.png'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { authData } from '../App'
-// import headphone from '../images/headphones.jpg'
 
 const Products = () => {
 
     const { logedUser, setLogedUser } = useContext(authData)
     const [products, setProducts] = useState([])
-    // const { bagCount, setBagCount } = useContext(authData)
 
     useEffect(() => {
         getProducts()
@@ -25,21 +23,9 @@ const Products = () => {
             console.log(err);
         }
     }
-
-    // const updatedBagCount = () => {
-    //     if (logedUser && logedUser.cart) {
-    //         const uniqueItems = new Set(logedUser.cart.map((item) => item.id));
-    //         setBagCount(uniqueItems.size);
-    //     } else {
-    //         setBagCount(0);
-    //     }
-    // }
-
     const handleAddToCart = async (product) => {
-        // console.log(product);
         try {
             const res = await axios.get(`http://localhost:1000/users/${logedUser.id}`)
-            // .then((res) => res.data)
             const currentUser = res.data
             let cart = [{ ...product }]
             if (currentUser.cart || currentUser.count) {
@@ -61,7 +47,7 @@ const Products = () => {
         } catch (err) {
             console.log(err);
         }
-        // console.log(logedUser.count);
+
     }
     return (
         <>
@@ -73,9 +59,9 @@ const Products = () => {
                             <div className="d-flex align-items-center justify-content-between">
                                 <p className='m-0 gr-text fs-5'>Smart Devices</p>
                                 <div className="cart-item d-flex">
-                                    <div className="cart p-2 me-3">
+                                    {/* <div className="cart p-2 me-3">
                                         Bag : 0
-                                    </div>
+                                    </div> */}
                                     <Link to='/cart' className='btn btn-light text-dark'>Cart<img src={carticon} alt="" width="24px" className='ms-2' /></Link>
                                 </div>
                             </div>

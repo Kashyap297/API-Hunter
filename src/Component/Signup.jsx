@@ -9,14 +9,10 @@ import { faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
 
 const Signup = () => {
 
-    // const [user, setUser] = useState([])
     const { users, setUsers } = useContext(authData)
     const [input, setInput] = useState({ name: '', email: '', password: '' })
     const [errors, setErrors] = useState({})
     const navigate = useNavigate()
-
-    // console.log(input);
-    // console.log(user);
 
     const checkValidation = (input) => {
         const errors = {}
